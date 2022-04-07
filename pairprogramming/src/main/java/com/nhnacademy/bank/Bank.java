@@ -4,6 +4,8 @@ import com.nhnacademy.exceptions.MoneyNegativeException;
 import com.nhnacademy.money.Money;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class Bank implements Calculatable {
     @Override
@@ -32,10 +34,14 @@ public class Bank implements Calculatable {
         return Money.won(Math.round(changedWon) * 10);
     }
 
-    public Money WonToDollar(Money won){
-        double changedDollar = (won.getBalance() / 1000);
-        return Money.dollar(changedDollar);
+    public Money wonToDollar(Money won){
+        double changedDollar = (won.getBalance() * 0.1);
+        double roundedBalance = Math.round(changedDollar) * 0.01;
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        return Money.dollar(Double.valueOf(formatter.format(roundedBalance)));
+
     }
+
 
 //    public Money
 }

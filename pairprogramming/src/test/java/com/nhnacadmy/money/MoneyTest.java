@@ -15,7 +15,6 @@ public class MoneyTest {
         assertThatThrownBy(() ->Money.dollar(-1))
             .isInstanceOf(MoneyNegativeException.class)
             .hasMessageContaining("금액", "0원미만");
-
     }
 
     @Test
