@@ -27,8 +27,15 @@ public class Bank implements Calculatable {
         return money1.equals(money2);
     }
 
-    public Money dollarToWon(Money money2) {
-        long changedWon = (long) (money2.getBalance() * 1000);
+    public Money dollarToWon(Money dollar) {
+        long changedWon = (long) (dollar.getBalance() * 1000);
         return Money.won(changedWon);
     }
+
+    public Money WonToDollar(Money won){
+        double changedDollar = (won.getBalance() / 1000);
+        return Money.dollar(changedDollar);
+    }
+
+    public Money
 }

@@ -65,9 +65,9 @@ public class BankTest  {
     @DisplayName("은행을 통해 환전")
     void bank_to_through_exchange(){
         Money money1 = Money.won(10_000);
-        Money money2 = Money.dollar(10);
-        assertThat(bank.dollarToWon(money2).getBalance()).isEqualTo(10_000);
-        assertThat(bank.dollarToWon(money2).getBalance()).isEqualTo(10_000);
+        Money money2 = Money.dollar(5.255);
+//        assertThat(bank.dollarToWon(money2).getBalance()).isEqualTo(5_255);
+//        assertThat(bank.WonToDollar(money1).getBalance()).isEqualTo(10.0);
+        assertThat(bank.dollarToWon(money2).getBalance()).isEqualTo(5_260);
     }
-
 }
