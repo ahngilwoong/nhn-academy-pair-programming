@@ -96,4 +96,18 @@ public class BankTest {
         assertThat(bank.wonToDollar(money1).getBalance()).isEqualTo(54.220);
         assertThat(bank.wonToDollar(money2).getBalance()).isEqualTo(54.230);
     }
+
+    @Test
+    @DisplayName("유로(1200원) -> 원으로 환전")
+    void euro_exchanged_to_won(){
+        Money money1 = Money.euro(1);
+        assertThat(bank.euroToWon(money1).getBalance()).isEqualTo(1200);
+    }
+
+    @Test
+    @DisplayName("유로(1200원) -> 달러로 환전")
+    void euro_exchanged_to_dollar(){
+        Money money1 = Money.euro(1);
+        assertThat(bank.euroTodollar(money1).getBalance()).isEqualTo(1.2);
+    }
 }

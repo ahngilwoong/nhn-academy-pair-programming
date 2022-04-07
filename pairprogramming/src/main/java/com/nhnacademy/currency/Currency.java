@@ -5,7 +5,5 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public enum Currency {
-    WON, DOLLAR, YEN;
-
-
+    WON, DOLLAR, YEN, EURO;
 }

@@ -30,4 +30,13 @@ public class MoneyTest {
         money1 = new Money(10000,Currency.YEN);
         return money1;
     }
+
+    @Test
+    @DisplayName("유로화 money 생성")
+    void create_euro_money(){
+        Money money;
+        money = new Money(20000,Currency.EURO);
+        assertThat(money.getCurrency()).isEqualTo(Currency.EURO);
+    }
+
 }

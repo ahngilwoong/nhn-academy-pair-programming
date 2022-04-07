@@ -17,6 +17,10 @@ public class Money {
         return new Money(balance, Currency.WON);
     }
 
+    public static Money euro(double balance){
+        return new Money(balance, Currency.EURO);
+    }
+
 
 
     public double getBalance() {
@@ -32,7 +36,7 @@ public class Money {
             throw new MoneyNegativeException("금액은 0원미만일 수 없습니다.");
         }
         this.balance = balance;
-        if(!currency.equals(Currency.WON) && !currency.equals(Currency.DOLLAR)){
+        if(!currency.equals(Currency.WON) && !currency.equals(Currency.DOLLAR) && !currency.equals(Currency.EURO)){
             throw new AnotherCurrencyException("달러 또는 원화만 이용 가능합니다.");
         }
         this.currency = currency;
