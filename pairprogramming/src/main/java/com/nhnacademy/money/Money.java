@@ -3,21 +3,21 @@ package com.nhnacademy.money;
 import com.nhnacademy.exceptions.MoneyNegativeException;
 
 public class Money {
-    private long money;
+    private long balance;
 
-    public long getMoney() {
-        return money;
+    public long getBalance() {
+        return balance;
     }
 
-    public void setMoney(long money) {
-        this.money = money;
+    public void setMoney(long balance) {
+        this.balance = balance;
     }
 
-    public Money(long money) {
-        if(money < 0){
+    public Money(long balance) {
+        if(balance < 0){
             throw new MoneyNegativeException("금액은 0원미만일 수 없습니다.");
         }
-        this.money = money;
+        this.balance = balance;
     }
 
     @Override
@@ -31,11 +31,11 @@ public class Money {
 
         Money money1 = (Money) o;
 
-        return money == money1.money;
+        return balance == money1.balance;
     }
 
     @Override
     public int hashCode() {
-        return (int) (money ^ (money >>> 32));
+        return (int) (balance ^ (balance >>> 32));
     }
 }
