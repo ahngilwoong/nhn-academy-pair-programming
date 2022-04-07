@@ -66,8 +66,8 @@ public class BankTest  {
     void bank_to_through_exchange(){
         Money money1 = Money.won(10_000);
         Money money2 = Money.dollar(10);
-        assertThat(bank.);
-
+        assertThat(bank.dollarToWon(money2).getBalance()).isEqualTo(10_000);
+        assertThat(bank.dollarToWon(money2).getBalance()).isEqualTo(10_000);
     }
 
 }
