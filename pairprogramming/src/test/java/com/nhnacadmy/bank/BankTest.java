@@ -4,17 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import com.nhnacademy.bank.Bank;
-import com.nhnacademy.currency.Currency;
 import com.nhnacademy.money.Money;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BankTest {
     Bank bank;
-    Currency currency;
 
     @BeforeEach
     void setUp() {
@@ -66,7 +62,7 @@ public class BankTest {
     @Test
     @DisplayName("통화는 달러화와 원화만이 존재하고, 환율은 1달러 <-> 1,000원")
     void exchange_dallor_or_won() {
-        Money money1 = Money.won(1);
+        Money money1 = Money.dollar(1);
         assertThat(bank.dollarToWon(money1).getBalance()).isEqualTo(1000);
     }
 
@@ -123,5 +119,59 @@ public class BankTest {
     void won_exchanged_to_euro(){
         Money won = Money.won(1200);
         assertThat(bank.wonToEuro(won).getBalance()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("달러 -> 원으로 환전시 화폐단위가 달러가 아니면 예외를 던짐")
+    void not_match_currency_dollar_to_won(){
+        Money won = Money.won(1200);
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> bank.dollarToWon(won))
+            .withMessageContaining("화폐단위");
+    }
+
+    @Test
+    @DisplayName("달러 -> 유로로 환전시 화폐단위가 달러가 아니면 예외를 던짐")
+    void not_match_currency_dollar_to_euro(){
+        Money won = Money.euro(1200);
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> bank.dollarToEuro(won))
+            .withMessageContaining("화폐단위");
+    }
+
+    @Test
+    @DisplayName("원 -> 달러로 환전시 화폐단위가 달러가 아니면 예외를 던짐")
+    void not_match_currency_won_to_dollar(){
+        Money won = Money.dollar(1200);
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> bank.wonToDollar(won))
+            .withMessageContaining("화폐단위");
+    }
+
+    @Test
+    @DisplayName("원 -> 유로으로 환전시 화폐단위가 달러가 아니면 예외를 던짐")
+    void not_match_currency_won_to_euro(){
+        Money won = Money.euro(1200);
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> bank.wonToEuro(won))
+            .withMessageContaining("화폐단위");
+    }
+
+    @Test
+    @DisplayName("유로 -> 달러로 환전시 화폐단위가 달러가 아니면 예외를 던짐")
+    void not_match_currency_euro_to_dollar(){
+        Money won = Money.dollar(1200);
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> bank.euroToDollar(won))
+            .withMessageContaining("화폐단위");
+    }
+
+    @Test
+    @DisplayName("유로 -> 원으로 환전시 화폐단위가 달러가 아니면 예외를 던짐")
+    void not_match_currency_euro_to_won(){
+        Money won = Money.won(1200);
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> bank.euroToWon(won))
+            .withMessageContaining("화폐단위");
     }
 }

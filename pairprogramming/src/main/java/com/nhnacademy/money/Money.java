@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Money {
     private double balance;
-    Currency currency;
+    private final Currency currency;
 
     public static Money dollar(double balance){
         return new Money(balance, Currency.DOLLAR);
