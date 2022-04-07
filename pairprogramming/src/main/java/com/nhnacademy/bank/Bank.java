@@ -28,8 +28,8 @@ public class Bank implements Calculatable {
     }
 
     public Money dollarToWon(Money dollar) {
-        long changedWon = (long) (dollar.getBalance() * 1000);
-        return Money.won(changedWon);
+        double changedWon = (dollar.getBalance() * 100);
+        return Money.won(Math.round(changedWon) * 10);
     }
 
     public Money WonToDollar(Money won){
@@ -37,5 +37,5 @@ public class Bank implements Calculatable {
         return Money.dollar(changedDollar);
     }
 
-    public Money
+//    public Money
 }
