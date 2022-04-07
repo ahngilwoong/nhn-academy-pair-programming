@@ -1,8 +1,9 @@
-package banktest;
+package com.nhnacadmy.bank;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.nhnacademy.bank.Bank;
+import com.nhnacademy.money.Money;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,10 +26,10 @@ public class BankTest {
 
     @Test
     @DisplayName("돈의 실제값이 같은지 확인.")
-    void eqauls_money(){시
-        Money money1;
-        Money money2;
-        assertThat(bank.equalsMoneyChecked()).isTrue();
-
+    void eqauls_money(){
+        Money money1 = new Money(2000L);
+        Money money2 = new Money(2000L);
+        assertThat(bank.isEqualsMoney(money1, money2)).isTrue();
     }
+
 }
