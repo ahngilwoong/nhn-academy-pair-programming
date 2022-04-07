@@ -3,7 +3,15 @@ package com.nhnacademy.money;
 import com.nhnacademy.exceptions.MoneyNegativeException;
 
 public class Money {
-    long money;
+    private long money;
+
+    public long getMoney() {
+        return money;
+    }
+
+    public void setMoney(long money) {
+        this.money = money;
+    }
 
     public Money(long money) {
         if(money < 0){

@@ -32,4 +32,11 @@ public class BankTest {
         assertThat(bank.isEqualsMoney(money1, money2)).isTrue();
     }
 
+    @Test
+    @DisplayName("5$ + 5$ = 10$")
+    void add_dollar_money() {
+        Money money1 = new Money(5);
+        Money money2 = new Money(5);
+        assertThat(bank.addMoney(money1, money2)).isEqualTo(10);
+    }
 }
