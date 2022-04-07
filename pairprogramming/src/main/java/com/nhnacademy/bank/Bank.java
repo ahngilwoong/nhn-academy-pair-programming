@@ -38,7 +38,7 @@ public class Bank implements Calculatable {
         double changedDollar = (won.getBalance() * 0.1);
         double roundedBalance = Math.round(changedDollar) * 0.01;
         NumberFormat formatter = new DecimalFormat("#0.00");
-        return Money.dollar(new Double(formatter.format(roundedBalance)));
+        return Money.dollar(Double.parseDouble(formatter.format(roundedBalance)));
 
     }
 
@@ -47,8 +47,18 @@ public class Bank implements Calculatable {
         return Money.won(Math.round(changedWon) * 12);
     }
 
-    public Money euroTodollar(Money euro) {
+    public Money euroToDollar(Money euro) {
         double changedDollar = (euro.getBalance() * 1.2);
         return Money.dollar(Math.round(changedDollar * 100) * 0.01);
+    }
+
+    public Money dollarToEuro(Money dollar) {
+        double changedEuro = (dollar.getBalance() / 1.2);
+        return Money.euro(Math.round(changedEuro * 100) * 0.01);
+    }
+
+    public Money wonToEuro(Money won) {
+        double changedWon = (won.getBalance() / 100); // == 1.2
+        return Money.euro(Math.round(changedWon) / 12);
     }
 }

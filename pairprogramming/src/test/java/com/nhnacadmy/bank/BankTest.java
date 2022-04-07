@@ -98,16 +98,30 @@ public class BankTest {
     }
 
     @Test
-    @DisplayName("유로(1200원) -> 원으로 환전")
+    @DisplayName("유로(1유로당 1200원) -> 원으로 환전")
     void euro_exchanged_to_won(){
         Money money1 = Money.euro(1);
         assertThat(bank.euroToWon(money1).getBalance()).isEqualTo(1200);
     }
 
     @Test
-    @DisplayName("유로(1200원) -> 달러로 환전")
+    @DisplayName("유로 -> 달러로 환전")
     void euro_exchanged_to_dollar(){
         Money money1 = Money.euro(1);
-        assertThat(bank.euroTodollar(money1).getBalance()).isEqualTo(1.2);
+        assertThat(bank.euroToDollar(money1).getBalance()).isEqualTo(1.2);
+    }
+
+    @Test
+    @DisplayName("달러 -> 유로로 환전")
+    void dollar_exchanged_to_euro(){
+        Money dollar = Money.dollar(1.2);
+        assertThat(bank.dollarToEuro(dollar).getBalance()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("원 -> 유로로 환전")
+    void won_exchanged_to_euro(){
+        Money won = Money.won(1200);
+        assertThat(bank.wonToEuro(won).getBalance()).isEqualTo(1);
     }
 }
