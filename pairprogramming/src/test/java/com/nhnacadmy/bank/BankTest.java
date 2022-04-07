@@ -21,24 +21,24 @@ public class BankTest  {
     @Test
     @DisplayName("금액을 더하는 기능 구현.")
     void add_money(){
-        Money money1 = new Money(1000,);
-        Money money2 = new Money(1000,);
+        Money money1 = new Money(1000,won_currency_constructor(currency));
+        Money money2 = new Money(1000,won_currency_constructor(currency));
         assertThat(bank.addMoney(money1, money2).getBalance()).isEqualTo(2000);
     }
 
     @Test
     @DisplayName("돈의 실제값이 같은지 확인.")
     void eqauls_money(){
-        Money money1 = new Money(2000L);
-        Money money2 = new Money(2000L);
+        Money money1 = new Money(2000L,won_currency_constructor(currency));
+        Money money2 = new Money(2000L,won_currency_constructor(currency));
         assertThat(bank.isEqualsMoney(money1, money2)).isTrue();
     }
 
     @Test
     @DisplayName("5$ + 5$ = 10$")
     void add_dollar_money() {
-        Money money1 = new Money(5);
-        Money money2 = new Money(5);
+        Money money1 = new Money(5,dollar_currency_constructor(currency));
+        Money money2 = new Money(5,dollar_currency_constructor(currency));
         assertThat(bank.addMoney(money1, money2)).isEqualTo(10);
     }
 
@@ -48,7 +48,7 @@ public class BankTest  {
     }
 
     private static Currency dollar_currency_constructor(Currency currency){
-        currency = Currency.WON;
+        currency = Currency.DOLLAR;
         return currency;
     }
 

@@ -1,5 +1,6 @@
 package com.nhnacademy.bank;
 
+import com.nhnacademy.currency.Currency;
 import com.nhnacademy.money.Money;
 
 public interface Calculatable {
