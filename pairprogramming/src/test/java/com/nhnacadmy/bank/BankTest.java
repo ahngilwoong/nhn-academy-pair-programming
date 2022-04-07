@@ -69,17 +69,14 @@ public class BankTest  {
         assertThat(bank.dollarToWon(money1).getBalance()).isEqualTo(1000);
     }
 
-    @Test
-    @DisplayName("통화는 달러화와 원화만이 존재하고 다른 통화가 들어오면 예외를 던짐")
-    void another_currency_input_then_throw_AnotherCurrencyException(){
-        fail("에러 던짐 구현 예정");
-    }
     
     @Test
     @DisplayName("5.25$ -> 5,250원\n")
     void dallor_exchange_to_won(){
         fail("달러 -> 원화 환전 테스트");
     }
+
+
 //
 //    @Test
 //    @DisplayName("은행을 통해 환전")

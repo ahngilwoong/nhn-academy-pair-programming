@@ -1,6 +1,7 @@
 package com.nhnacadmy.money;
 
 import com.nhnacademy.currency.Currency;
+import com.nhnacademy.exceptions.AnotherCurrencyException;
 import com.nhnacademy.exceptions.MoneyNegativeException;
 import com.nhnacademy.money.Money;
 import org.junit.jupiter.api.DisplayName;
@@ -14,5 +15,20 @@ public class MoneyTest {
         assertThatThrownBy(() ->Money.dollar(-1))
             .isInstanceOf(MoneyNegativeException.class)
             .hasMessageContaining("금액", "0원미만");
+
+    }
+
+    @Test
+    @DisplayName("통화는 달러화와 원화만이 존재하고 다른 통화가 들어오면 예외를 던짐")
+    void another_currency_input_then_throw_AnotherCurrencyException(){
+        assertThatThrownBy(this::another_money_constructor)
+            .isInstanceOf(AnotherCurrencyException.class)
+            .hasMessageContaining("달러","원화");
+    }
+
+    private Money another_money_constructor(){
+        Money money1;
+        money1 = new Money(10000,Currency.YEN);
+        return money1;
     }
 }

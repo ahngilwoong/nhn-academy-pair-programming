@@ -1,6 +1,7 @@
 package com.nhnacademy.money;
 
 import com.nhnacademy.currency.Currency;
+import com.nhnacademy.exceptions.AnotherCurrencyException;
 import com.nhnacademy.exceptions.MoneyNegativeException;
 import java.util.Objects;
 
@@ -16,6 +17,8 @@ public class Money {
         return new Money(balance, Currency.WON);
     }
 
+
+
     public double getBalance() {
         return balance;
     }
@@ -29,6 +32,9 @@ public class Money {
             throw new MoneyNegativeException("금액은 0원미만일 수 없습니다.");
         }
         this.balance = balance;
+        if(!currency.equals(Currency.WON) && !currency.equals(Currency.DOLLAR)){
+            throw new AnotherCurrencyException("달러 또는 원화만 이용 가능합니다.");
+        }
         this.currency = currency;
     }
 
