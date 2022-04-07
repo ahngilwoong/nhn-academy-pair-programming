@@ -3,6 +3,7 @@ package com.nhnacadmy.bank;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.nhnacademy.bank.Bank;
+import com.nhnacademy.currency.Currency;
 import com.nhnacademy.money.Money;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 public class BankTest  {
     Bank bank;
+    Currency currency;
 
     @BeforeEach
     void setUp(){
@@ -19,9 +21,8 @@ public class BankTest  {
     @Test
     @DisplayName("금액을 더하는 기능 구현.")
     void add_money(){
-        Money money1 = new Money(1000);
-        Money money2 = new Money(1000);
-
+        Money money1 = new Money(1000,);
+        Money money2 = new Money(1000,);
         assertThat(bank.addMoney(money1, money2).getBalance()).isEqualTo(2000);
     }
 
@@ -40,4 +41,15 @@ public class BankTest  {
         Money money2 = new Money(5);
         assertThat(bank.addMoney(money1, money2)).isEqualTo(10);
     }
+
+    private static Currency won_currency_constructor(Currency currency){
+        currency = Currency.WON;
+        return currency;
+    }
+
+    private static Currency dollar_currency_constructor(Currency currency){
+        currency = Currency.WON;
+        return currency;
+    }
+
 }
