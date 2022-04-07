@@ -2,12 +2,13 @@ package com.nhnacademy.money;
 
 import com.nhnacademy.currency.Currency;
 import com.nhnacademy.exceptions.MoneyNegativeException;
+import java.util.Objects;
 
 public class Money {
-    private long balance;
+    private double balance;
     Currency currency;
 
-    public static Money dollar(long balance){
+    public static Money dollar(double balance){
         return new Money(balance, Currency.DOLLAR);
     }
 
@@ -15,7 +16,7 @@ public class Money {
         return new Money(balance, Currency.WON);
     }
 
-    public long getBalance() {
+    public double getBalance() {
         return balance;
     }
 
@@ -23,7 +24,7 @@ public class Money {
         this.balance = balance;
     }
 
-    public Money(long balance, Currency currency) {
+    public Money(double balance, Currency currency) {
         if(balance < 0){
             throw new MoneyNegativeException("금액은 0원미만일 수 없습니다.");
         }
@@ -51,6 +52,6 @@ public class Money {
 
     @Override
     public int hashCode() {
-        return (int) (balance ^ (balance >>> 32));
+        return Objects.hash(balance, currency);
     }
 }

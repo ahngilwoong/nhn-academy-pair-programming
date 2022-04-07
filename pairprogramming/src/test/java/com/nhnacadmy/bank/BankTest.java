@@ -56,6 +56,8 @@ public class BankTest  {
     @Test
     @DisplayName("5.25$ + 5.25$ = 10.50$ (소숫점 이하 2자리)")
     void add_decimal_point_money(){
-
+        Money money1 = Money.dollar(5.253);
+        Money money2 = Money.dollar(5.253);
+        assertThat(bank.addMoney(money1,money2).getBalance()).isEqualTo(10.50);
     }
 }
