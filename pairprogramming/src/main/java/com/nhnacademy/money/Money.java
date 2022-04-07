@@ -7,6 +7,14 @@ public class Money {
     private long balance;
     Currency currency;
 
+    public static Money dollar(long balance){
+        return new Money(balance, Currency.DOLLAR);
+    }
+
+    public static Money won(long balance){
+        return new Money(balance, Currency.WON);
+    }
+
     public long getBalance() {
         return balance;
     }
