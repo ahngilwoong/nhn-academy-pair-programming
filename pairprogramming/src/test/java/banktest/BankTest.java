@@ -25,7 +25,7 @@ public class BankTest {
 
     @Test
     @DisplayName("돈의 실제값이 같은지 확인.")
-    void eqauls_money(){
+    void eqauls_money(){시
         Money money1;
         Money money2;
         assertThat(bank.equalsMoneyChecked()).isTrue();
