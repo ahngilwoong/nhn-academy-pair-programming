@@ -56,8 +56,18 @@ public class BankTest  {
     @Test
     @DisplayName("5.25$ + 5.25$ = 10.50$ (소숫점 이하 2자리)")
     void add_decimal_point_money(){
-        Money money1 = Money.dollar(5.253);
-        Money money2 = Money.dollar(5.253);
-        assertThat(bank.addMoney(money1,money2).getBalance()).isEqualTo(10.50);
+        Money money1 = Money.dollar(5.256);
+        Money money2 = Money.dollar(5.256);
+        assertThat(bank.addMoney(money1,money2).getBalance()).isEqualTo(10.51);
     }
+
+    @Test
+    @DisplayName("은행을 통해 환전")
+    void bank_to_through_exchange(){
+        Money money1 = Money.won(10_000);
+        Money money2 = Money.dollar(10);
+        assertThat(bank.);
+
+    }
+
 }

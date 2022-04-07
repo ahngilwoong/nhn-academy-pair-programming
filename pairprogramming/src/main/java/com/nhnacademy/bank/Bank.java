@@ -2,14 +2,17 @@ package com.nhnacademy.bank;
 
 import com.nhnacademy.exceptions.MoneyNegativeException;
 import com.nhnacademy.money.Money;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Bank implements Calculatable {
     @Override
     public Money addMoney(Money money1, Money money2) {
-        String resultMoney = (money1.getBalance() + money2.getBalance())+"";
-        return new Money(String.format("%.2f", resultMoney), money1.getCurrency());
+        String resultStrMoney = (money1.getBalance() + money2.getBalance())+"";
+        BigDecimal bigDecimal = new BigDecimal(resultStrMoney).setScale(2, RoundingMode.FLOOR);
+        double resultMoney = bigDecimal.doubleValue();
+        return new Money(resultMoney, money1.getCurrency());
     }
-//System.out.println(String.format("%.2f_", n));
 
     @Override
     public Money subtractMoney(Money money1, Money money2) {
